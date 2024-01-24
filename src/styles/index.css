@@ -19,6 +19,8 @@ p{
     margin-top: 300px;
 }
 #deletebtn {
+    border-color: black;
+    background-color: rgb(122, 21, 111);
     margin-left: 5px;
     margin-top: 7px;
 }
