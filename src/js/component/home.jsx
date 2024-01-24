@@ -30,23 +30,24 @@ function handleEnter (e,task){
 }
 
 	return (
-		<div className="text-center">
+		<div id="card" className="text-center">
 			<div className="top">
 			<h1>To Do</h1>	
 			<input type="text" value={userInput} onChange={(e)=>setUserInput(e.target.value)} onKeyDown={(e)=>handleEnter(e,userInput)}/>
-			<button className="btn btn-success" onClick={()=> addToDo(userInput)}>Add</button>
+			<button id="addbtn" className="btn btn-success" onClick={()=> addToDo(userInput)}>Add</button>
 			</div>
 			<div>
 				<ul>
 					{toDo?.map((task,index)=>(
 						<li key={index}>{task.lable} 
-						<button className="btn btn-danger" onClick={()=>deleteToDo(index)}>Delete</button>
+						<button id="deletebtn" className="btn btn-danger" onClick={()=>deleteToDo(index)}>Delete</button>
 						</li>
 						
 					))}
 				</ul>
-				<p>{toDo.length}Things Left To Do</p>
+				
 			</div>
+			<p>{toDo.length}Things Left To Do</p>
 		</div>
 	);
 };

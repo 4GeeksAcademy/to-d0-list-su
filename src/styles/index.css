@@ -1,12 +1,24 @@
-
-/* 
-
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+#card{
+    background-color: rgb(219, 173, 209);
+   height: 500px;
+   width: 450px;
+   margin: auto;
+   margin-top: 160px;
+   border-radius: 50px;
+   padding: 30px;
+}
+body{
+     background-color: rgb(242, 210, 226);}
+#addbtn{
+    background-color: rgb(229, 146, 226);
+    margin-left: 10px;
+    width: 100px;
+}
+p{
+    color: white;
+    margin-top: 300px;
+}
+#deletebtn {
+    margin-left: 5px;
+    margin-top: 7px;
+}
