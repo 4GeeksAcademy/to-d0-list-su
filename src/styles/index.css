@@ -16,11 +16,19 @@ body{
 }
 p{
     color: white;
-    margin-top: 300px;
+    margin-top: 4px;
+    margin-left: 50px;
 }
 #deletebtn {
     border-color: black;
     background-color: rgb(122, 21, 111);
     margin-left: 5px;
     margin-top: 7px;
+    height: 35px;
+    width: 100px;
+}
+ul{
+    margin-bottom: 60px;
+    margin: 30px;
+position:absolute;
 }

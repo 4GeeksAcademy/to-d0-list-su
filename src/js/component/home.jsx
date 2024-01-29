@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 //delete toDo
 //button
@@ -8,10 +8,29 @@ import React, {useState} from "react";
 const Home = () => {
 	const [toDo,setToDo] = useState([])
 	const [userInput,setUserInput] = useState("")
-
+	useEffect(() => {
+		async function getToDo() {
+			const response = await fetch("https://playground.4geeks.com/apis/fake/todos/user/Suri1336")
+			const data = await response.json()
+			console.log(data)
+			setToDo(data)
+		}
+		getToDo()
+	}, [])
+	useEffect (()=>{
+		async function updateToDo(){
+			const response = await fetch("https://playground.4geeks.com/apis/fake/todos/user/Suri1336", {
+				method:"PUT",
+				headers:{"Content-Type":"application/json"},
+				body:JSON.stringify(toDo)
+			})
+			const data = await response.json()
+		}
+		updateToDo()
+	},[toDo])
 //type in toDo
 	function addToDo(task){
-let temporaryToDo ={lable:task,done:false}
+let temporaryToDo ={label : task,done:false}
 setToDo([...toDo,temporaryToDo])
 setUserInput("")
 	}
@@ -30,24 +49,29 @@ function handleEnter (e,task){
 }
 
 	return (
-		<div id="card" className="text-center">
+		<div  id="card" className="text-center position-relative overflow-scroll">
 			<div className="top">
 			<h1>To Do</h1>	
 			<input type="text" value={userInput} onChange={(e)=>setUserInput(e.target.value)} onKeyDown={(e)=>handleEnter(e,userInput)}/>
 			<button id="addbtn" className="btn btn-success" onClick={()=> addToDo(userInput)}>Add</button>
+			
 			</div>
+		
 			<div>
-				<ul>
+			<p className="position-absolute">{toDo.length}Things Left To Do</p>
+				<ul className="d-flex flex-column" id="list">
 					{toDo?.map((task,index)=>(
-						<li key={index}>{task.lable} 
+						<div><li key={index}>{task.label} 
 						<button id="deletebtn" className="btn btn-danger" onClick={()=>deleteToDo(index)}>Delete</button>
 						</li>
+						</div>
+						
 						
 					))}
 				</ul>
 				
 			</div>
-			<p>{toDo.length}Things Left To Do</p>
+			
 		</div>
 	);
 };
